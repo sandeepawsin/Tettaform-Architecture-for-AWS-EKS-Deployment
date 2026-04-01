@@ -59,3 +59,168 @@ The system follows a modern GitOps-based architecture:
 
 ## 📁 Project Structure
 
+eks-production-platform/
+│
+├── terraform/ # Infrastructure as Code
+├── kubernetes/ # Kubernetes manifests
+├── helm/ # Helm charts
+├── argocd/ # ArgoCD applications
+├── .github/workflows/ # CI/CD pipelines
+└── README.md
+
+
+---
+
+## 🚀 Features
+
+- ✅ Infrastructure provisioning using Terraform
+- ✅ Kubernetes cluster setup using EKS
+- ✅ GitOps-based deployment using ArgoCD
+- ✅ Automated CI/CD pipeline
+- ✅ Container image management using AWS ECR
+- ✅ Observability with Prometheus & Grafana
+- ✅ Horizontal Pod Autoscaling (HPA)
+- ✅ Production-ready architecture design
+
+---
+
+## 🔄 CI/CD Workflow
+
+1. Code pushed to GitHub
+2. GitHub Actions pipeline triggers:
+   - Build Docker image
+   - Security scan (optional)
+   - Push image to AWS ECR
+3. ArgoCD detects manifest changes
+4. Automatic deployment to Kubernetes
+
+---
+
+## 📊 Observability
+
+- **Prometheus** collects metrics from Kubernetes cluster
+- **Grafana** dashboards visualize system performance
+- **Alertmanager** triggers alerts for:
+  - High CPU usage
+  - Pod restarts
+  - Node failures
+
+---
+
+## ⚡ Auto Scaling
+
+- **Horizontal Pod Autoscaler (HPA)** scales application pods based on CPU usage
+- **Cluster Autoscaler** adjusts node capacity dynamically
+
+---
+
+## 🔐 Security Best Practices
+
+- IAM roles and least privilege access
+- Kubernetes RBAC for access control
+- Secrets management using Kubernetes/AWS Secrets Manager
+
+---
+
+## 🛠️ Setup Instructions
+
+### 1. Clone Repository
+git clone https://github.com/sandeepawsin/terraform-architecture-for-aws-eks.git
+
+cd eks-production-platform
+
+
+---
+
+### 2. Provision Infrastructure
+cd terraform
+terraform init
+terraform apply
+
+cd terraform
+terraform init
+terraform apply
+
+
+---
+
+### 3. Configure kubectl
+
+
+aws eks update-kubeconfig --region <region> --name <cluster-name>
+kubectl get nodes
+
+
+---
+
+### 4. Install ArgoCD
+
+
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+
+---
+
+### 5. Deploy Application via ArgoCD
+
+Apply ArgoCD application manifest:
+
+
+kubectl apply -f argocd/applications.yaml
+
+
+---
+
+### 6. Install Monitoring Stack
+
+
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+helm install monitoring prometheus-community/kube-prometheus-stack
+
+
+---
+
+## 📸 Screenshots (Add these)
+
+- ArgoCD dashboard
+- Grafana dashboards
+- CI/CD pipeline execution
+- Kubernetes pods/services
+
+---
+
+## 🎯 Use Cases
+
+- Production-grade Kubernetes deployment
+- DevOps/SRE learning and demonstration
+- GitOps workflow implementation
+- Cloud-native architecture reference
+
+---
+
+## 🚀 Future Enhancements
+
+- Add Loki for centralized logging
+- Integrate Trivy for security scanning
+- Implement service mesh (Istio)
+- Add multi-environment (dev/stage/prod)
+- Implement blue-green/canary deployments
+
+---
+
+## 👨‍💻 Author
+
+Sandeep Kumar Reddy  
+Senior DevOps / SRE / Platform Engineer  
+
+---
+
+## ⭐ Key Highlights
+
+- Reduced MTTR using observability stack
+- Enabled automated deployments using GitOps
+- Designed scalable and highly available architecture
+- Implemented production-ready DevOps best practices
+
